@@ -1,0 +1,5 @@
+package com.contact.demo.dao;
+
+public class Contactdao {
+
+}

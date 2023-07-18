@@ -1,0 +1,50 @@
+package com.contact.demo.dao;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.contact.demo.entity.Contact;
+import com.contact.demo.repository.ContactRepository;
+
+@Repository
+public class Contactdao {
+	
+	@Autowired
+	ContactRepository rep;
+
+	public List<Contact> getAllContact() {
+		return rep.findAll();
+	}
+	
+	public Contact getContactById(int deptId) {
+		return rep.findById(deptId).orElse(null);
+	}
+	
+	
+	
+	public Contact registerContact(Contact Contact) {
+		return rep.save(Contact);
+	}
+	
+	public Contact updateContact(Contact Contact) {
+		return rep.save(Contact);
+	}
+
+	
+	 public void deleteNumberFromContact(int contactId, Long number) {
+	        Optional<Contact> optionalContact = rep.findById(contactId);
+	        if (optionalContact.isPresent()) {
+	            Contact contact = optionalContact.get();
+	            contact.getNumbers().remove(number);
+	            rep.save(contact);
+	        }
+	        
+	 }
+	 
+	 public void delete(int id) {
+			rep.deleteById(id);
+		}
+}

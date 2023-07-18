@@ -1,0 +1,46 @@
+package com.contact.demo.dao;
+
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.contact.demo.entity.Contact;
+import com.contact.demo.rep.ContactRep;
+
+@Repository
+public class Contactdao {
+	
+	@Autowired
+	ContactRep rep;
+
+	
+	public List<Contact> getAllContact() {
+		return rep.findAll();
+	}
+	
+	public Contact getContactById(int deptId) {
+		return rep.findById(deptId).orElse(null);
+	}
+	
+	
+	
+	public Contact registerContact(Contact Contact) {
+		return rep.save(Contact);
+	}
+	
+	public Contact updateContact(Contact Contact) {
+		return rep.save(Contact);
+	}
+	
+	 public void addNumbers(List<Long> numbers) {
+	        for (Long number : numbers) {
+	            Contact entity = new Contact();
+	            entity.setNumber(number);
+	            rep.save(entity);
+	        }
+
+}
+}

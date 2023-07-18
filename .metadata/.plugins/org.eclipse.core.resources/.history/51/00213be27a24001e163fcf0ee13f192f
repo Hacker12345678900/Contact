@@ -1,0 +1,5 @@
+package com.contact.demo.controller;
+
+public class ContactController {
+
+}

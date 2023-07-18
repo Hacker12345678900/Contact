@@ -1,0 +1,5 @@
+package com.contact.demo.rep;
+
+public interface ContactRep {
+
+}
